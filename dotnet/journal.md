@@ -13,6 +13,7 @@
 - `Cache` now implements `ICache` with the type generic
 - implemented naive version of the cache
 - limit cache to only work with reference types
+- add key override when using same key
 
 # decisions
 

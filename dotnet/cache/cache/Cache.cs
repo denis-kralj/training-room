@@ -19,6 +19,14 @@ public class Cache<T> : ICache<T> where T : class
 
     public void Set(string key, T value)
     {
+        RemoveIfExists(key);
         _cache.Add(key, value);
+    }
+
+    private void RemoveIfExists(string key)
+    {
+        if(_cache.ContainsKey(key)) {
+            _cache.Remove(key);
+        }
     }
 }

@@ -31,4 +31,13 @@ public class CacheTests
         var cache = new Cache<string>();
         Assert.That(cache.Get("nonExistingKey"), Is.Null);
     }
+
+    [Test]
+    public void SetOverridesValueForSameKey()
+    {
+        var cache = new Cache<string>();
+        cache.Set("key1", "value1");
+        cache.Set("key1", "value11");
+        Assert.That(cache.Get("key1"), Is.EqualTo("value11"));
+    }
 }
