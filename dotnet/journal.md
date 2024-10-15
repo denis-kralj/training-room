@@ -11,8 +11,10 @@
 - included `cache.test` project in solution
 - created interface `ICache.cs` that conforms to limitations set out int the problem description
 - `Cache` now implements `ICache` with the type generic
-- dummy test removed
+- implemented naive version of the cache
+- limit cache to only work with reference types
 
 # decisions
 
 - choose nunit over xunit because the documentation was easier to read and the assertion writing patterns were more semantic
+- decided to limit T in the cache to classes, this means that structs aren't supported in the cache, this simplifies my get logic and removes chances to return default primitives for missing cache keys
