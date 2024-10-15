@@ -16,6 +16,7 @@
 - add key override when using same key
 - add capacity awareness
 - add linked list to monitor order of items for eviction needs
+- add support for moving to top of list when has is called on entry, affecting eviction order
 
 # decisions
 

@@ -1,5 +1,4 @@
-﻿
-namespace cache;
+﻿namespace cache;
 
 public class Cache<T>(int itemCapacity = 3) : ICache<T> where T : class
 {
@@ -18,7 +17,23 @@ public class Cache<T>(int itemCapacity = 3) : ICache<T> where T : class
 
     public bool Has(string key)
     {
-        return _cache.ContainsKey(key);
+        var has = _cache.ContainsKey(key);
+        if(has)
+        {
+            MoveToHead(key);
+        }
+        return has;
+    }
+
+    private void MoveToHead(string key)
+    {
+        if (key == _entryKeyList.First?.Value)
+        {
+            return;
+        }
+
+        _entryKeyList.Remove(key);
+        _entryKeyList.AddFirst(key);
     }
 
     public void Set(string key, T value)
