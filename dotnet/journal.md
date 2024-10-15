@@ -18,9 +18,15 @@
 - add linked list to monitor order of items for eviction needs
 - add support for moving to top of list when has is called on entry, affecting eviction order
 - move entry to head of linked list when Get is called
+- introduced support for time-to-live
+- change internal linked list to store last accessed information
+- introduced now provider
+- refactor code to work with new nodes in linked list
+
 
 # decisions
 
 - choose nunit over xunit because the documentation was easier to read and the assertion writing patterns were more semantic
 - decided to limit T in the cache to classes, this means that structs aren't supported in the cache, this simplifies my get logic and removes chances to return default primitives for missing cache keys
 - storing actual cached valus in dictionary (quick access) and using a linked list to determine eviction/expiration
+- added support for supplying a now provider, this is used for testing so that we don't have to await time in the test, but rather fake the passage of time

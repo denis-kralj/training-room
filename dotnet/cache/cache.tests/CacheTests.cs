@@ -85,4 +85,29 @@ public class CacheTests
             Assert.That(cache.Get("key3"), Is.EqualTo("value3"));
         });
     }
+
+    [Test]
+    public void HasRespectsTimeToLive()
+    {
+        var dateTimeProvider = new TestDateTimeProvider();
+        var cache = new Cache<string>(3, 500, dateTimeProvider.GetNow);
+        cache.Set("key1", "value1");
+        dateTimeProvider.AddMilliseconds(600);
+        Assert.That(cache.Has("key1"), Is.False);
+    }
+}
+
+class TestDateTimeProvider
+{
+    public TestDateTimeProvider()
+    {
+        _now = DateTime.UtcNow;
+        GetNow = () => _now;
+    }
+    private DateTime _now;
+    public Func<DateTime> GetNow {get;}
+    public void AddMilliseconds(int milliseconds)
+    {
+        _now = _now.AddMilliseconds(milliseconds);
+    }
 }
