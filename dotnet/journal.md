@@ -9,7 +9,9 @@
 - created first test
 - included `cache` project in solution
 - included `cache.test` project in solution
-
+- created interface `ICache.cs` that conforms to limitations set out int the problem description
+- `Cache` now implements `ICache` with the type generic
+- dummy test removed
 
 # decisions
 
