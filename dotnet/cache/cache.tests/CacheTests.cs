@@ -69,4 +69,20 @@ public class CacheTests
             Assert.That(cache.Get("key3"), Is.EqualTo("value3"));
         });
     }
+
+    [Test]
+    public void GetAffectsEvictionOrder()
+    {
+        var cache = new Cache<string>(2);
+        cache.Set("key1", "value1");
+        cache.Set("key2", "value2");
+        cache.Get("key1");
+        cache.Set("key3", "value3");
+        Assert.Multiple(() =>
+        {
+            Assert.That(cache.Get("key1"), Is.EqualTo("value1"));
+            Assert.That(cache.Get("key2"), Is.Null);
+            Assert.That(cache.Get("key3"), Is.EqualTo("value3"));
+        });
+    }
 }

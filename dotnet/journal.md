@@ -17,6 +17,7 @@
 - add capacity awareness
 - add linked list to monitor order of items for eviction needs
 - add support for moving to top of list when has is called on entry, affecting eviction order
+- move entry to head of linked list when Get is called
 
 # decisions
 

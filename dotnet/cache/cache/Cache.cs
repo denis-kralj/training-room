@@ -9,6 +9,7 @@ public class Cache<T>(int itemCapacity = 3) : ICache<T> where T : class
     public T? Get(string key)
     {
         if(_cache.TryGetValue(key, out var value)) {
+            MoveToHead(key);
             return value;
         }
 
