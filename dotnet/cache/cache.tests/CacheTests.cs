@@ -40,4 +40,17 @@ public class CacheTests
         cache.Set("key1", "value11");
         Assert.That(cache.Get("key1"), Is.EqualTo("value11"));
     }
+
+    [Test]
+    public void SetRespectsItemCapacity()
+    {
+        var cache = new Cache<string>(1);
+        cache.Set("key1", "value1");
+        cache.Set("key2", "value2");
+        Assert.Multiple(() =>
+        {
+            Assert.That(cache.Get("key1"), Is.Null);
+            Assert.That(cache.Get("key2"), Is.EqualTo("value2"));
+        });
+    }
 }

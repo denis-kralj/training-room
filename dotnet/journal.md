@@ -14,8 +14,11 @@
 - implemented naive version of the cache
 - limit cache to only work with reference types
 - add key override when using same key
+- add capacity awareness
+- add linked list to monitor order of items for eviction needs
 
 # decisions
 
 - choose nunit over xunit because the documentation was easier to read and the assertion writing patterns were more semantic
 - decided to limit T in the cache to classes, this means that structs aren't supported in the cache, this simplifies my get logic and removes chances to return default primitives for missing cache keys
+- storing actual cached valus in dictionary (quick access) and using a linked list to determine eviction/expiration
