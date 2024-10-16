@@ -6,6 +6,16 @@ describe('`has()` method', () => {
         const cache = createCache()
         expect(cache.has('nonExistingKey')).toBe(false)
     })
+    it('affects eviction order', () => {
+        const cache = createCache(2)
+        cache.set('key1', 'value1')
+        cache.set('key2', 'value2')
+        cache.has('key1')
+        cache.set('key3', 'value3')
+        expect(cache.has('key1')).toBe(true)
+        expect(cache.has('key2')).toBe(false)
+        expect(cache.has('key3')).toBe(true)
+    })
 })
 
 describe('`set()` method', () => {
