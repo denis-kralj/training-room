@@ -48,6 +48,7 @@ export function createCache<T>(itemLimit: number = 10) {
             if (entry === undefined) {
                 return null
             }
+            moveToHead(entry)
             return entry.value
         },
         has: (key: string) => {
