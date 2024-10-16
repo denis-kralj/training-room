@@ -49,9 +49,9 @@ describe('`set()` method', () => {
         cache.set('key2', 'value2')
         cache.set('key1', 'value11')
         cache.set('key3', 'value3')
-        expect(cache.has('key1')).toBe(true)
-        expect(cache.has('key2')).toBe(false)
-        expect(cache.has('key3')).toBe(true)
+        expect(cache.get('key1')).toBe("value11")
+        expect(cache.get('key2')).toBe(null)
+        expect(cache.get('key3')).toBe("value3")
     })
 })
 
