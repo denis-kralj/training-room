@@ -42,6 +42,34 @@ export function createCache<T>(itemLimit: number = 10) {
         _head = entry
     }
 
+    const removeIfExists = (key: string) => {
+        const entry = _store.get(key)
+
+        if(entry === undefined) {
+            return
+        }
+        if (entry === _head) {
+            _head = _head.tail
+            if (_head !== null) {
+                _head.head = null
+            }
+        } else if (entry === _tail) {
+            _tail = _tail.head
+            if (_tail !== null) {
+                _tail.tail = null
+            }
+        } else {
+            if (entry.head !== null) {
+                entry.head.tail = entry.tail
+            }
+            if (entry.tail !== null) {
+                entry.tail.head = entry.head
+            }
+        }
+
+        _store.delete(key);
+    }
+
     return {
         get: (key: string): (T | null) => {
             const entry = _store.get(key)
@@ -60,6 +88,7 @@ export function createCache<T>(itemLimit: number = 10) {
             return true
         },
         set: (key: string, value: T) => {
+            removeIfExists(key);
             evictIfNeeded();
             const entry: LinkedListCacheEntry<T> = { value: value, key: key, head: null, tail: _head }
             _store.set(key, entry)
