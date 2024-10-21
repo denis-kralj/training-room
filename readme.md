@@ -30,3 +30,18 @@ When doing an exercise, create a new branch from `main` and keep all the work in
 
 - add support for TTL (time-to-live)
 - an entry that wasn't used for a period greater than the TTL supplied gets evicted as well
+
+### Implement a linked list
+
+#### Requirements
+
+- allows insert (add to top)
+- allows append (add to bottom)
+- allows find
+- allows delete
+- allows length
+- allows print
+
+#### Bonus requirements
+
+- allows removal of duplicates
