@@ -45,3 +45,10 @@ When doing an exercise, create a new branch from `main` and keep all the work in
 #### Bonus requirements
 
 - allows removal of duplicates
+
+### Implement a sorting algorithm
+
+- selection sort
+- insertion sort
+- quick sort
+- bubble sort
