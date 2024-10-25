@@ -22,7 +22,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\LinkedList.Core\LinkedList.Core.csproj" />
+    <ProjectReference Include="..\DoubleLinkedList.Core\DoubleLinkedList.Core.csproj" />
   </ItemGroup>
 
 </Project>
