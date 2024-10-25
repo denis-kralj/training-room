@@ -4,33 +4,35 @@ public class DoubleLinkedList<T> where T : class
 {
     public DoubleLinkedListNode<T>? Head { get; private set; }
     public DoubleLinkedListNode<T>? Tail { get; private set; }
-    public void Insert(T value)
+    public DoubleLinkedListNode<T> Insert(T value)
     {
         var newNode = new DoubleLinkedListNode<T>(value);
         if(Head == null)
         {
             Head = newNode;
             Tail = newNode;
-            return;
+            return newNode;
         }
 
         Head.Head = newNode;
         newNode.Tail = Head;
         Head = newNode;
+        return newNode;
     }
-    public void Append(T value)
+    public DoubleLinkedListNode<T> Append(T value)
     {
         var newNode = new DoubleLinkedListNode<T>(value);
         if(Head == null)
         {
             Head = newNode;
             Tail = newNode;
-            return;
+            return newNode;
         }
 
         Tail.Tail = newNode;
         newNode.Head = Tail;
         Tail = newNode;
+        return newNode;
     }
 }
 

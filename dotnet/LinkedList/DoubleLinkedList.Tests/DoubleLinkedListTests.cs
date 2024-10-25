@@ -76,4 +76,22 @@ public class DoubleLinkedListTests
         Assert.That(list.Head.Value, Is.EqualTo("value3"));
         Assert.That(list.Tail.Value, Is.EqualTo("value4"));
     }
+
+    [Test]
+    public void ReturnsNewNodeWhenInserting()
+    {
+        var list = new DoubleLinkedList<string>();
+        var node = list.Insert("value1");
+        Assert.That(node, Is.Not.Null);
+        Assert.That(node.Value, Is.EqualTo("value1"));
+    }
+
+    [Test]
+    public void ReturnsNewNodeWhenAppending()
+    {
+        var list = new DoubleLinkedList<string>();
+        var node = list.Append("value1");
+        Assert.That(node, Is.Not.Null);
+        Assert.That(node.Value, Is.EqualTo("value1"));
+    }
 }
