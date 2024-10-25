@@ -22,4 +22,22 @@ public class DoubleLinkedListTests
             Assert.That(node.Tail, Is.Null);
         });
     }
+
+    [Test]
+    public void InsertsNodeAsNewHead()
+    {
+        var list = new DoubleLinkedList<string>();
+        list.Insert("value");
+        Assert.That(list.Head.Value, Is.EqualTo("value"));
+    }
+
+    [Test]
+    public void InsertingMultipleNodesReturnsLatestAsHead()
+    {
+        var list = new DoubleLinkedList<string>();
+        list.Insert("value1");
+        list.Insert("value2");
+        list.Insert("value3");
+        Assert.That(list.Head.Value, Is.EqualTo("value3"));
+    }
 }
