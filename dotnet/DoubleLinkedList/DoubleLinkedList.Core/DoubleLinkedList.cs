@@ -4,6 +4,20 @@ public class DoubleLinkedList<T> where T : class
 {
     public DoubleLinkedListNode<T>? Head { get; private set; }
     public DoubleLinkedListNode<T>? Tail { get; private set; }
+    public int Count
+    {
+        get
+        {
+            var current = Head;
+            var count = 0;
+            while (current != null)
+            {
+                count++;
+                current = current.Tail;
+            }
+            return count;
+        }
+    }
     public DoubleLinkedListNode<T> Insert(T value)
     {
         var newNode = new DoubleLinkedListNode<T>(value);
@@ -22,7 +36,7 @@ public class DoubleLinkedList<T> where T : class
     public DoubleLinkedListNode<T> Append(T value)
     {
         var newNode = new DoubleLinkedListNode<T>(value);
-        if (Head == null)
+        if (Tail == null)
         {
             Head = newNode;
             Tail = newNode;

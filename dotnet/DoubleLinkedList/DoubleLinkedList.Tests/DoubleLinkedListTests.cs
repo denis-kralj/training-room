@@ -155,4 +155,18 @@ public class DoubleLinkedListTests
 
         Assert.That(list.Tail, Is.EqualTo(head));
     }
+
+    [TestCase(0)]
+    [TestCase(10)]
+    [TestCase(50)]
+    public void ExposesLength(int count)
+    {
+        var list = new DoubleLinkedList<string>();
+        for (var i = 0; i < count; i++)
+        {
+            list.Append($"value{i}");
+        }
+
+        Assert.That(list.Count, Is.EqualTo(count));
+    }
 }
