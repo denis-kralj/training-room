@@ -1,4 +1,4 @@
-namespace DoubleLinkedList.Core;
+﻿namespace DoubleLinkedList.Core;
 
 public class DoubleLinkedList<T> where T : class
 {
@@ -73,10 +73,14 @@ public class DoubleLinkedList<T> where T : class
     }
 }
 
-[method: System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
-public class DoubleLinkedListNode<T>(T value) where T : class
+public class DoubleLinkedListNode<T> where T : class
 {
-    public required T Value { get; set; } = value;
-    public DoubleLinkedListNode<T>? Head { get; set; } = null;
-    public DoubleLinkedListNode<T>? Tail { get; set; } = null;
+    [System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
+    internal DoubleLinkedListNode(T value)
+    {
+        Value = value;
+    }
+    public required T Value { get; set; }
+    public DoubleLinkedListNode<T>? Head { get; internal set; } = null;
+    public DoubleLinkedListNode<T>? Tail { get; internal set; } = null;
 }
