@@ -29,9 +29,8 @@ When doing an exercise, create a new branch from `main` and keep all the work in
 #### Bonus requirements
 
 - add support for TTL (time-to-live)
-- an entry that wasn't used for a period greater than the TTL supplied gets evicted as well
 
-### Implement a linked list
+### Implement a linked list (single linked)
 
 #### Requirements
 
@@ -45,6 +44,7 @@ When doing an exercise, create a new branch from `main` and keep all the work in
 #### Bonus requirements
 
 - allows removal of duplicates
+- make the list double linked
 
 ### Implement a sorting algorithm
 
