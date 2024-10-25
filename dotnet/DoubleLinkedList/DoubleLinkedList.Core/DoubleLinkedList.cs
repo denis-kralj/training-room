@@ -1,4 +1,4 @@
-﻿namespace DoubleLinkedList.Core;
+namespace DoubleLinkedList.Core;
 
 public class DoubleLinkedList<T> where T : class
 {
@@ -47,6 +47,29 @@ public class DoubleLinkedList<T> where T : class
             current = current.Tail;
         }
         return null;
+    }
+
+    public void Delete(DoubleLinkedListNode<T> toDelete)
+    {
+        if (Head == toDelete)
+        {
+            Head = toDelete.Tail;
+        }
+
+        if (Tail == toDelete)
+        {
+            Tail = Tail.Head;
+        }
+
+        if (toDelete.Head != null)
+        {
+            toDelete.Head.Tail = toDelete.Tail;
+        }
+
+        if (toDelete.Tail != null)
+        {
+            toDelete.Tail.Head = toDelete.Head;
+        }
     }
 }
 
