@@ -7,7 +7,7 @@ public class DoubleLinkedList<T> where T : class
     public DoubleLinkedListNode<T> Insert(T value)
     {
         var newNode = new DoubleLinkedListNode<T>(value);
-        if(Head == null)
+        if (Head == null)
         {
             Head = newNode;
             Tail = newNode;
@@ -22,7 +22,7 @@ public class DoubleLinkedList<T> where T : class
     public DoubleLinkedListNode<T> Append(T value)
     {
         var newNode = new DoubleLinkedListNode<T>(value);
-        if(Head == null)
+        if (Head == null)
         {
             Head = newNode;
             Tail = newNode;
@@ -33,6 +33,20 @@ public class DoubleLinkedList<T> where T : class
         newNode.Head = Tail;
         Tail = newNode;
         return newNode;
+    }
+
+    public DoubleLinkedListNode<T>? Find(T value)
+    {
+        var current = Head;
+        while (current != null)
+        {
+            if (current.Value == value)
+            {
+                return current;
+            }
+            current = current.Tail;
+        }
+        return null;
     }
 }
 

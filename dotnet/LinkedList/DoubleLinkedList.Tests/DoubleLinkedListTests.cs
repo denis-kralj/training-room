@@ -94,4 +94,37 @@ public class DoubleLinkedListTests
         Assert.That(node, Is.Not.Null);
         Assert.That(node.Value, Is.EqualTo("value1"));
     }
+
+    [Test]
+    public void ReturnsCorrectNodeWhenFinding()
+    {
+        var list = new DoubleLinkedList<string>();
+        list.Append("value1");
+        var nodeSearchedFor = list.Append("value2");
+        list.Append("value3");
+        var found = list.Find("value2");
+        Assert.That(found, Is.EqualTo(nodeSearchedFor));
+    }
+
+    [Test]
+    public void ReturnsNullWhenSearchingForNonExistingValue()
+    {
+        var list = new DoubleLinkedList<string>();
+        list.Append("value1");
+        list.Append("value2");
+        list.Append("value3");
+        var found = list.Find("nonExistingValue");
+        Assert.That(found, Is.Null);
+    }
+
+    [Test]
+    public void ReturnsFirstCorrectNodeWhenFinding()
+    {
+        var list = new DoubleLinkedList<string>();
+        var nodeSearchedFor = list.Append("value1");
+        var secondNodeThatCouldBeFound = list.Append("value1");
+        var found = list.Find("value1");
+        Assert.That(found, Is.EqualTo(nodeSearchedFor));
+        Assert.That(found, Is.Not.EqualTo(secondNodeThatCouldBeFound));
+    }
 }
