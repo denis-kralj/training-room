@@ -169,4 +169,42 @@ public class DoubleLinkedListTests
 
         Assert.That(list.Count, Is.EqualTo(count));
     }
+
+    [Test]
+    public void PrintsOutValues()
+    {
+        var list = new DoubleLinkedList<string>();
+        list.Append("value1");
+        list.Append("value2");
+        list.Append("value3");
+
+        Assert.That(list.Print(), Is.EqualTo("[value1, value2, value3]"));
+    }
+
+    [Test]
+    public void PrintsOutCorrectEmptyList()
+    {
+        var list = new DoubleLinkedList<string>();
+
+        Assert.That(list.Print(), Is.EqualTo("[]"));
+    }
+
+    [Test]
+    public void PrintsOutValuesReverse()
+    {
+        var list = new DoubleLinkedList<string>();
+        list.Append("value1");
+        list.Append("value2");
+        list.Append("value3");
+
+        Assert.That(list.PrintReverse(), Is.EqualTo("[value3, value2, value1]"));
+    }
+
+    [Test]
+    public void PrintsOutCorrectEmptyListReverse()
+    {
+        var list = new DoubleLinkedList<string>();
+
+        Assert.That(list.PrintReverse(), Is.EqualTo("[]"));
+    }
 }

@@ -1,4 +1,6 @@
-﻿namespace DoubleLinkedList.Core;
+﻿using System.Text;
+
+namespace DoubleLinkedList.Core;
 
 public class DoubleLinkedList<T> where T : class
 {
@@ -84,6 +86,48 @@ public class DoubleLinkedList<T> where T : class
         {
             toDelete.Tail.Head = toDelete.Head;
         }
+    }
+
+    public string Print()
+    {
+        var stringBuilder = new StringBuilder("[");
+
+        var current = Head;
+
+        while (current != null)
+        {
+            stringBuilder.Append(current.Value.ToString());
+            current = current.Tail;
+            if (current != null)
+            {
+                stringBuilder.Append(", ");
+            }
+        }
+
+        stringBuilder.Append(']');
+
+        return stringBuilder.ToString();
+    }
+
+    public string PrintReverse()
+    {
+        var stringBuilder = new StringBuilder("[");
+
+        var current = Tail;
+
+        while (current != null)
+        {
+            stringBuilder.Append(current.Value.ToString());
+            current = current.Head;
+            if (current != null)
+            {
+                stringBuilder.Append(", ");
+            }
+        }
+
+        stringBuilder.Append(']');
+
+        return stringBuilder.ToString();
     }
 }
 
