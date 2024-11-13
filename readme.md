@@ -52,3 +52,5 @@ When doing an exercise, create a new branch from `main` and keep all the work in
 - insertion sort
 - quick sort
 - bubble sort
+
+### Implement the binary search algorithm
